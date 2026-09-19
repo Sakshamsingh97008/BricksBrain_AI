@@ -61,7 +61,7 @@ export default function Home() {
   // =========================
   useEffect(() => {
     api
-      .get("/properties/featured")
+      .get("/api/properties/featured")
       .then(({ data }) => {
         setFeatured(data.properties || []);
       })
