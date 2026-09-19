@@ -35,7 +35,7 @@ export default function Listings() {
     try {
       const query = { ...filters, page: p, limit: 12 };
       Object.keys(query).forEach((k) => (query[k] === "" ? delete query[k] : null));
-      const { data } = await api.get("/properties", { params: query });
+      const { data } = await api.get("/api/properties", { params: query });
       setProperties(data.properties);
       setTotal(data.total);
       setPage(data.page);
@@ -66,7 +66,7 @@ export default function Listings() {
   const toggleSave = async (id) => {
     if (!user) return navigate("/login");
     try {
-      const { data } = await api.post(`/properties/${id}/save`);
+      const { data } = await api.post(`/api/properties/${id}/save`);
       setSavedIds(data.savedProperties);
     } catch (err) {}
   };
